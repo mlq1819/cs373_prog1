@@ -1,4 +1,4 @@
-P=
+P=Turing
 CFLAGS= -g -Wall
 
 all: $(P)
