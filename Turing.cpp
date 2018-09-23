@@ -34,7 +34,7 @@ int main(int argc, char *argv[]){
 		}
 	}
 	
-	reader.start()
+	reader.start();
 	while(!reader.atEnd()){
 		string str = reader.current();
 		if(str.find("state", 0)==0)
