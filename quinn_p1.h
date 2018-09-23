@@ -60,7 +60,7 @@ class Turing{
 		unsigned long max;
 		State * getState(int num);
 		Transition * getTrans(int num, char a);
-		bool go();
+		bool go(char x);
 	public:
 		Turing(std::string str, unsigned long max);
 		std::string str;

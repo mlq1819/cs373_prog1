@@ -99,14 +99,14 @@ Turing::Turing(string str, unsigned long max){
 bool Turing::begin(){
 	this->cur=this->start;
 	cout << this->cur;
-	if(!this->go()){
+	if(!this->go('R')){
 		cout << " quit" << endl;
 		return false;
 	}
 	return true;
 }
 
-bool Turing::go(){
+bool Turing::go(char x){
 	if(this->counter++>this->max)
 		return false;
 	State * s = getState(this->cur);
@@ -120,7 +120,7 @@ bool Turing::go(){
 	char c = this->str.at(this->index);
 	if(DEBUG){
 		cout << "\t(" << this->cur << "," << c << ")" << endl; 
-		cout << "\t(" << this->index << "/" << this->str.size()  << ")" << endl;
+		cout << "\t(" << this->index+1 << "/" << this->str.size()  << ")" << endl;
 	}
 	if(s->hasTrans(c)){
 		Transition * t = s->getTrans(c);
@@ -143,10 +143,21 @@ bool Turing::go(){
 		} else
 			return false;
 		cout << "->" << this->cur;
-		return this->go();
+		return this->go(t->getX());
 	} else if(DEBUG){
-		cout << "NO TRANSITION:\n\t";
-		s->print();
+		if(x=='L'){
+			if(this->index==0)
+				return false;
+			else
+				this->index--;
+		} else if(x=='R'){
+			if(((unsigned int) this->index)==this->str.size()-1)
+				return false;
+			else
+				this->index++;
+		} else
+			return false;
+		return this->go(x);
 	}
 	return false;
 }
