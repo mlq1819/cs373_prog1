@@ -119,8 +119,7 @@ bool Turing::go(char x){
 	}
 	char c = this->str.at(this->index);
 	if(DEBUG){
-		cout << "\t(" << this->cur << "," << c << ")" << endl; 
-		cout << "\t(" << this->index+1 << "/" << this->str.size()  << ")" << endl;
+		cout << "\t(" << this->cur << "," << c << "),(" << this->index+1 << "/" << this->str.size()  << ")" << endl;
 	}
 	if(s->hasTrans(c)){
 		Transition * t = s->getTrans(c);
