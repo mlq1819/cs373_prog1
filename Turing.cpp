@@ -28,23 +28,30 @@ int main(int argc, char *argv[]){
 	
 	if(DEBUG){
 		reader.start();
+		cout << "Printing Text:" << endl;
 		while(!reader.atEnd()){
 			cout << reader.current() << endl;
 			reader.next();
 		}
+		cout << "Printed Text!\n" << endl;
 	}
 	
 	reader.start();
 	while(!reader.atEnd()){
 		string str = reader.current();
 		if(DEBUG)
-			cout << "Start:\t" << str << endl;
-		if(str.find("state", 0)==0)
+			cout << "Start\t" << str << endl;
+		if(str.find("state", 0)==0){
+			if(DEBUG)
+				cout << "State: Adding... " << endl;
 			turing.addState(str);
-		else if(str.find("transition", 0)==0)
+		} else if(str.find("transition", 0)==0){
+			if(DEBUG)
+				cout << "Transition: Adding... " << endl;
 			turing.addTrans(str);
+		}
 		if(DEBUG)
-			cout << "End\t" << str << endl;
+			cout << "\tAdded!\t" << str << endl;
 		reader.next();
 	}
 	
