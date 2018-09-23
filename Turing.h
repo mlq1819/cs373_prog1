@@ -7,24 +7,22 @@
 #include <vector>
 #include <string>
 
-class Turing{
+class Transition{
 	private:
-		std::vector<State> states;
-		int cur;
-		int start;
-		State * getState(int num) const;
-		Trans * getTrans(int num, char a) const;
+		int q;
+		char a;
+		int r;
+		char b;
+		char x;
+		friend class State;
 	public:
-		Turing();
-		~Turing();
-		bool hasStart(){return this->start!=-1;};
-		int getCurrent(){return this->current;};
-		bool addState(State s);
-		bool addState(std::string str);
-		bool hasState(int num) const;
-		bool hasTrans(int num, char a);
-		bool addTrans(Transition t);
-		bool addTrans(std::string);
+		Transition(std::string str);
+		bool equals(Transition o) const;
+		int getQ(){return this->q;} const;
+		char getA(){return this->a;} const;
+		int getR(){return this->r;} const;
+		char getB(){return this->b;} const;
+		char getX(){return this->x;} const;
 };
 
 class State{
@@ -50,22 +48,24 @@ class State{
 		bool isReject(){return this->reject;} const;
 };
 
-class Transition{
+class Turing{
 	private:
-		int q;
-		char a;
-		int r;
-		char b;
-		char x;
-		friend class State;
+		std::vector<State> states;
+		int cur;
+		int start;
+		State * getState(int num) const;
+		Trans * getTrans(int num, char a) const;
 	public:
-		Transition(std::string str);
-		bool equals(Transition o) const;
-		int getQ(){return this->q;} const;
-		char getA(){return this->a;} const;
-		int getR(){return this->r;} const;
-		char getB(){return this->b;} const;
-		char getX(){return this->x;} const;
+		Turing();
+		~Turing();
+		bool hasStart(){return this->start!=-1;};
+		int getCurrent(){return this->current;};
+		bool addState(State s);
+		bool addState(std::string str);
+		bool hasState(int num) const;
+		bool hasTrans(int num, char a);
+		bool addTrans(Transition t);
+		bool addTrans(std::string);
 };
 
 #endif
