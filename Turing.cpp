@@ -96,7 +96,7 @@ bool Turing::addState(State s){
 	return true;
 }
 
-bool Turing::addState(string str){
+bool Turing::addState(vector<string> str){
 	State s = State(str);
 	return this->addState(s);
 }
@@ -146,7 +146,7 @@ bool Turing::addTrans(Transition t){
 	return true;
 }
 
-bool Turing::addTrans(string str){
+bool Turing::addTrans(vector<string> str){
 	Transition t = Transition(str);
 	return this->addTrans(t);
 }
@@ -227,7 +227,7 @@ bool State::addTrans(vector<string> str){
 
 
 
-Transition::Transition(string str){
+Transition::Transition(vector<string> str){
 	string t = "transition\t";
 	if(DEBUG)
 		cout << "[q=";
