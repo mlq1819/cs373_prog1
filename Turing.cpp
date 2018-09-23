@@ -103,7 +103,7 @@ bool Turing::addTrans(Transition t){
 		return t0.equals(t);
 	}
 	if(this->hasState(t.getQ())){
-		this->getState(t.getQ())->addTrans();
+		this->getState(t.getQ())->addTrans(t);
 		return true;
 	}
 	this->addState(State(t.getQ()));
@@ -121,7 +121,8 @@ State::State(string str){
 	int index=0;
 	string s = "state\t";
 	index+=s.size();
-	this->num = stoi(str.substr(index, -1), &(index++), 10);
+	this->num = stoi(str.substr(index, -1), &index, 10);
+	index++;
 	if(str.substr(index, -1).compare("start")==0)
 		this->start=true;
 	else if(str.substr(index, -1).compare("accept")==0)
@@ -184,11 +185,16 @@ Transition::Transition(string str){
 	int index=0;
 	string t = "transition\t";
 	index+=t.size();
-	this->q = stoi(str.substr(index, -1), &(index++), 10);
-	this->a = str.substr(index, -1).at(index++);
-	this->r= stoi(str.substr(index, -1), &(index++), 10);
-	this->b = str.substr(index, -1).at(index++);
-	this->x = str.substr(index, -1).at(index++);
+	this->q = stoi(str.substr(index, -1), &index, 10);
+	index++;
+	this->a = str.substr(index, -1).at(index);
+	index++;
+	this->r= stoi(str.substr(index, -1), &index, 10);
+	index++;
+	this->b = str.substr(index, -1).at(index);
+	index++;
+	this->x = str.substr(index, -1).at(index);
+	index++;
 }
 
 bool Transition::equals(Transition o) const {
