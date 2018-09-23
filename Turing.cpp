@@ -37,11 +37,14 @@ int main(int argc, char *argv[]){
 	reader.start();
 	while(!reader.atEnd()){
 		string str = reader.current();
+		if(DEBUG)
+			cout << "Start:\t" << str << endl;
 		if(str.find("state", 0)==0)
 			turing.addState(str);
 		else if(str.find("transition", 0)==0)
 			turing.addTrans(str);
-		cout << str << endl;
+		if(DEBUG)
+			cout << "End\t" << str << endl;
 		reader.next();
 	}
 	
