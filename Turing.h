@@ -57,7 +57,6 @@ class Turing{
 		Transition * getTrans(int num, char a);
 	public:
 		Turing();
-		~Turing();
 		bool hasStart(){return this->start!=-1;};
 		int getCur(){return this->cur;};
 		bool addState(State s);

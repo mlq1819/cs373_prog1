@@ -82,7 +82,7 @@ State * Turing::getState(int num){
 }
 
 bool Turing::hasTrans(int num, char a) const{
-	for(int i=0; i<this->states.size(); i++){
+	for(unsigned int i=0; i<this->states.size(); i++){
 		if(this->states[i].getNum()==num)
 			return this->states[i].hasTrans(a);
 	}
