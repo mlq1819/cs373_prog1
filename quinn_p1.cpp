@@ -118,12 +118,14 @@ bool Turing::go(){
 		return true;
 	}
 	char c = this->str.at(this->index);
-	if(DEBUG)
-		cout << "(" << this->cur << "," << c << ")" << endl; 
+	if(DEBUG){
+		cout << "\t(" << this->cur << "," << c << ")" << endl; 
+		cout << "\t(" << this->index << "/" << this->str.size()  << ")" << endl;
+	}
 	if(s->hasTrans(c)){
 		Transition * t = s->getTrans(c);
 		if(DEBUG){
-			cout << ":";
+			cout << "\t:";
 			t->print();
 		}
 		this->cur=t->getR();
@@ -143,6 +145,7 @@ bool Turing::go(){
 		cout << "->" << this->cur;
 		return this->go();
 	} else if(DEBUG){
+		cout << "NO TRANSITION:\n\t"
 		s->print();
 	}
 	return false;
