@@ -18,11 +18,11 @@ class Transition{
 	public:
 		Transition(std::string str);
 		bool equals(Transition o) const;
-		int getQ(){return this->q;} const;
-		char getA(){return this->a;} const;
-		int getR(){return this->r;} const;
-		char getB(){return this->b;} const;
-		char getX(){return this->x;} const;
+		int getQ()const{return this->q;};
+		char getA()const{return this->a;};
+		int getR()const{return this->r;};
+		char getB()const{return this->b;};
+		char getX()const{return this->x;};
 };
 
 class State{
@@ -42,10 +42,10 @@ class State{
 		bool addTrans(Transition t);
 		bool addTrans(std::string str);
 		bool hasTrans(char a) const;
-		int getNum(){return this->num;} const;
-		bool isStart(){return this->start;} const;
-		bool isAccept(){return this->accept;} const;
-		bool isReject(){return this->reject;} const;
+		int getNum()const{return this->num;};
+		bool isStart()const{return this->start;};
+		bool isAccept()const{return this->accept;};
+		bool isReject()const{return this->reject;};
 };
 
 class Turing{
