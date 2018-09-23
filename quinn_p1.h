@@ -23,6 +23,7 @@ class Transition{
 		int getR()const{return this->r;};
 		char getB()const{return this->b;};
 		char getX()const{return this->x;};
+		void print() const;
 };
 
 class State{

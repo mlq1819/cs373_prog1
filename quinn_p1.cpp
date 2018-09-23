@@ -325,3 +325,8 @@ Transition::Transition(vector<string> str){
 bool Transition::equals(Transition o) const {
 	return o.getQ()==this->getQ() && o.getA()==this->getA() && o.getR()==this->getR() && o.getB()==this->getB() && o.getX()==this->getX();
 }
+
+void Transition::print() const{
+	cout << "[" << this->getQ() << "," << this->getA() << "," << this->getR() << "," << this->getB() << "," << this->getX() << "]" << endl;
+}
+
