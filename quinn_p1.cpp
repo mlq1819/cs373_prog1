@@ -107,6 +107,10 @@ bool Turing::begin(){
 }
 
 bool Turing::go(char x){
+	if(this->counter==0)
+		cout << this->cur;
+	else
+		cout << "->" << this->cur;
 	if(this->counter++>this->max)
 		return false;
 	State * s = getState(this->cur);
@@ -141,7 +145,6 @@ bool Turing::go(char x){
 				this->index++;
 		} else
 			return false;
-		cout << "->" << this->cur;
 		return this->go(t->getX());
 	} else if(DEBUG){
 		if(x=='L'){
