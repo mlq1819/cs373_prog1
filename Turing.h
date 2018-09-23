@@ -53,10 +53,15 @@ class Turing{
 		std::vector<State> states;
 		int cur;
 		int start;
+		int index;
+		unsigned long counter;
+		unsigned long max;
 		State * getState(int num);
 		Transition * getTrans(int num, char a);
+		bool go();
 	public:
-		Turing();
+		Turing(std::string str, unsigned long max);
+		std::string str;
 		bool hasStart(){return this->start!=-1;};
 		int getCur(){return this->cur;};
 		bool addState(State s);
@@ -65,6 +70,7 @@ class Turing{
 		bool hasTrans(int num, char a) const;
 		bool addTrans(Transition t);
 		bool addTrans(std::vector<std::string> str);
+		bool start();
 };
 
 #endif

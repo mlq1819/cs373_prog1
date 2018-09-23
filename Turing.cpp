@@ -1,6 +1,6 @@
 #include "Turing.h"
 #include "Filereader.h"
-#define DEBUG true
+#define DEBUG false
 
 using namespace std;
 
@@ -43,7 +43,9 @@ int main(int argc, char *argv[]){
 		return 1;
 	}
 	
-	Turing turing = Turing();
+	unsigned long max = stoul(argv[3], nullptr, 10);
+	
+	Turing turing = Turing(argv[2], max);
 	
 	if(DEBUG){
 		reader.start();
@@ -74,13 +76,64 @@ int main(int argc, char *argv[]){
 		reader.next();
 	}
 	
+	turing.start();
+	
 	return 0;
 }
 
-Turing::Turing(){
+Turing::Turing(string str, unsigned long max){
 	this->states=vector<State>();
 	this->cur=-1;
 	this->start=-1;
+	this->str=str;
+	this->index=0;
+	this->counter=0;
+	this->max=max;
+}
+
+//Entry into program
+bool Turing::start(){
+	this->cur=this->start;
+	cout << this->cur;
+	if(!this->go()){
+		cout << " quit" << endl;
+		return false;
+	}
+	return true;
+}
+
+bool Turing::go(){
+	if(this->counter++>this->max)
+		return false;
+	State * s = getState(this->cur);
+	if(s->isAccept()){
+		cout << " accept" << endl;
+		return true;
+	} else if(s->isReject()){
+		cout << " reject" << endl;
+		return true;
+	}
+	char c = this->str.at(this->index);
+	if(s->hasTrans(c)){
+		Transition * t = s->getTrans(c);
+		this->cur=t->getR();
+		this->str.replace(this->index, 1, 1, t->getB());
+		if(t->getX()=='L'){
+			if(this->index==0)
+				return false;
+			else
+				this->index--;
+		} else if(t->getX()=='R'){
+			if(this->index==this->str.size()-1)
+				return false;
+			else
+				this->index++;
+		} else
+			return false;
+		cout << "->" << this->cur;
+		return this->go();
+	}
+	return false;
 }
 
 bool Turing::addState(State s){
