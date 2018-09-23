@@ -139,7 +139,7 @@ bool Turing::go(){
 		cout << "->" << this->cur;
 		return this->go();
 	} else if(DEBUG){
-		
+		s->print();
 	}
 	return false;
 }
