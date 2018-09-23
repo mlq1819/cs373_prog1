@@ -65,11 +65,15 @@ int main(int argc, char *argv[]){
 		if(str.find("state", 0)==0){
 			if(DEBUG)
 				cout << "\tState: Adding... ";
-			turing.addState(parser(str));
+			if(!turing.addState(parser(str)))
+				if(DEBUG)
+					cout << "ERROR! State not added!" << endl;
 		} else if(str.find("transition", 0)==0){
 			if(DEBUG)
 				cout << "\tTransition: Adding... " << endl;
-			turing.addTrans(parser(str));
+			if(!turing.addTrans(parser(str)))
+				if(DEBUG)
+					cout << "ERROR! Transition not added!" << endl;
 		}
 		if(DEBUG)
 			cout << "\t\tAdded!\t" << str << endl;
