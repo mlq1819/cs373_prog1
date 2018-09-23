@@ -4,6 +4,23 @@
 
 using namespace std;
 
+vector<string> parser(string str){
+	vector<string> toReturn = vector<string>();
+	string s = "";
+	for(unsigned int i=0; i<str.size(); i++){
+		char c = str.at(i);
+		if(c=='\t'){
+			if(s.size()>0){
+				toReturn.push_back(s);
+				s="";
+			}
+		} else {
+			s.append(1, c);
+		}
+	}
+	return toReturn;
+}
+
 int main(int argc, char *argv[]){
 	if(argc!=4){ //if bad command
 		if(argc<4)
@@ -44,14 +61,14 @@ int main(int argc, char *argv[]){
 		if(str.find("state", 0)==0){
 			if(DEBUG)
 				cout << "\tState: Adding... ";
-			turing.addState(str);
+			turing.addState(parser(str));
 		} else if(str.find("transition", 0)==0){
 			if(DEBUG)
 				cout << "\tTransition: Adding... " << endl;
-			turing.addTrans(str);
+			turing.addTrans(parser(str));
 		}
 		if(DEBUG)
-			cout << "\t\tAdded!" << str << endl;
+			cout << "\t\tAdded!\t" << str << endl;
 		reader.next();
 	}
 	
@@ -136,28 +153,25 @@ bool Turing::addTrans(string str){
 
 
 
-State::State(string str){
-	size_t index=0;
-	string s = "state\t";
-	index+=s.size();
+State::State(vector<string> str){
 	if(DEBUG)
 		cout << "[num=";
-	this->num = stoi(str.substr(index, -1), &index, 10);
+	this->num = stoi(str[1], nullptr, 10);
 	index++;
 	s = "start";
 	if(DEBUG)
 		cout << this->num << "],[" << s << "=";
-	if(str.substr(index, s.size()).compare(s)==0)
+	if(str[2](index, s.size()).compare(s)==0)
 		this->start=true;
 	s = "accept";
 	if(DEBUG)
 		cout << this->start << "],[" << s << "=";
-	else if(str.substr(index, s.size()).compare(s)==0)
+	else if(str[2](index, s.size()).compare(s)==0)
 		this->accept=true;
 	s = "reject";
 	if(DEBUG)
 		cout << this->accept << "],[" << s << "=";
-	else if(str.substr(index, s.size()).compare(s)==0)
+	else if(str[2](index, s.size()).compare(s)==0)
 		this->reject=true;
 	if(DEBUG)
 		cout << this->reject << "]" << endl;
@@ -206,7 +220,7 @@ bool State::addTrans(Transition t){
 	return true;
 }
 
-bool State::addTrans(string str){
+bool State::addTrans(vector<string> str){
 	Transition t = Transition(str);
 	return this->addTrans(t);
 }
@@ -214,32 +228,30 @@ bool State::addTrans(string str){
 
 
 Transition::Transition(string str){
-	size_t index=0;
 	string t = "transition\t";
-	index+=t.size();
 	if(DEBUG)
 		cout << "[q=";
-	this->q = stoi(str.substr(index, -1), &index, 10);
+	this->q = stoi(str[1], nullptr, 10);
 	index++;
 	if(DEBUG)
 		cout << this->q << "],[a=";
-	this->a = str.substr(index, -1).at(index);
+	this->a = str[2].at(0);
 	index++;
 	if(this->a=='_')
 		this->a=' ';
 	if(DEBUG)
 		cout << this->a << "],[r=";
-	this->r= stoi(str.substr(index, -1), &index, 10);
+	this->r= stoi(str[3], nullptr, 10);
 	index++;
 	if(DEBUG)
 		cout << this->r << "],[b=";
-	this->b = str.substr(index, -1).at(index);
+	this->b = str[4].at(0);
 	index++;
 	if(this->b=='_')
 		this->b=' ';
 	if(DEBUG)
 		cout << this->b << "],[x=";
-	this->x = str.substr(index, -1).at(index);
+	this->x = str[5].at(0);
 	index++;
 	if(DEBUG)
 		cout << this->x << "]" << endl;

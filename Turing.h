@@ -16,7 +16,7 @@ class Transition{
 		char x;
 		friend class State;
 	public:
-		Transition(std::string str);
+		Transition(std::vector<std::string> str);
 		bool equals(Transition o) const;
 		int getQ()const{return this->q;};
 		char getA()const{return this->a;};
@@ -35,12 +35,12 @@ class State{
 		friend class Turing;
 		Transition * getTrans(char a);
 	public:
-		State(std::string);
+		State(std::vector<std::string>);
 		State(int num, bool start, bool accept, bool reject);
 		State(int num);
 		bool equals(State o) const;
 		bool addTrans(Transition t);
-		bool addTrans(std::string str);
+		bool addTrans(std::vector<std::string> str);
 		bool hasTrans(char a) const;
 		int getNum()const{return this->num;};
 		bool isStart()const{return this->start;};
@@ -60,11 +60,11 @@ class Turing{
 		bool hasStart(){return this->start!=-1;};
 		int getCur(){return this->cur;};
 		bool addState(State s);
-		bool addState(std::string str);
+		bool addState(std::vector<std::string> str);
 		bool hasState(int num) const;
 		bool hasTrans(int num, char a) const;
 		bool addTrans(Transition t);
-		bool addTrans(std::string);
+		bool addTrans(std::vector<std::string> str);
 };
 
 #endif
