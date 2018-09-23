@@ -1,6 +1,6 @@
 #include "quinn_p1.h"
 #include "Filereader.h"
-#define DEBUG false
+#define DEBUG true
 
 using namespace std;
 
@@ -116,6 +116,10 @@ bool Turing::go(){
 	char c = this->str.at(this->index);
 	if(s->hasTrans(c)){
 		Transition * t = s->getTrans(c);
+		if(DEBUG){
+			cout << "(" << this->num << "," << c;
+			cout << ": [" << t->getQ() << "," << t->getA() << "," << t->getR() << "," << t->getB() << "," << t->getX() << "])" << endl;
+		}
 		this->cur=t->getR();
 		this->str.replace(this->index, 1, 1, t->getB());
 		if(t->getX()=='L'){
