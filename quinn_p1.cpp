@@ -58,7 +58,7 @@ int main(int argc, char *argv[]){
 	}
 	
 	reader.start();
-	while(!reader.atEnd()){
+	do{
 		string str = reader.current();
 		if(DEBUG)
 			cout << "Start\t" << str << endl;
@@ -77,8 +77,7 @@ int main(int argc, char *argv[]){
 		}
 		if(DEBUG)
 			cout << "\t\tAdded!\t" << str << endl;
-		reader.next();
-	}
+	} while (reader.next());
 	
 	turing.begin();
 	
