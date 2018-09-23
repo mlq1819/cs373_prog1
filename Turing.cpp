@@ -18,6 +18,8 @@ vector<string> parser(string str){
 			s.append(1, c);
 		}
 	}
+	if(s.size()>0)
+		toReturn.push_back(s);
 	return toReturn;
 }
 
