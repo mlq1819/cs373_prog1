@@ -204,16 +204,28 @@ Transition::Transition(string str){
 	size_t index=0;
 	string t = "transition\t";
 	index+=t.size();
+	if(DEBUG)
+		cout << "[q=";
 	this->q = stoi(str.substr(index, -1), &index, 10);
 	index++;
+	if(DEBUG)
+		cout << this->q << "],[a=";
 	this->a = str.substr(index, -1).at(index);
 	index++;
+	if(DEBUG)
+		cout << this->a << "],[r=";
 	this->r= stoi(str.substr(index, -1), &index, 10);
 	index++;
+	if(DEBUG)
+		cout << this->r << "],[b=";
 	this->b = str.substr(index, -1).at(index);
 	index++;
+	if(DEBUG)
+		cout << this->b << "],[x=";
 	this->x = str.substr(index, -1).at(index);
 	index++;
+	if(DEBUG)
+		cout << this->x << "]" << endl;
 }
 
 bool Transition::equals(Transition o) const {
