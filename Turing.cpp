@@ -47,7 +47,7 @@ Turing::Turing(){
 
 bool Turing::addState(State s){
 	if(this->hasState(s.getNum())){
-		State s0 = this->getState(s.getNum());
+		State s0 = *(this->getState(s.getNum()));
 		return s0.equals(s);
 	}
 	if(s.isStart()){
@@ -74,7 +74,7 @@ bool Turing::hasState(int num) const{
 }
 
 State * Turing::getState(int num) const {
-	for(int i=0; i<this->states.size(); i++){
+	for(unsigned int i=0; i<this->states.size(); i++){
 		if(this->states[i].getNum()==num)
 			return &(this->states[i]);
 	}
@@ -90,7 +90,7 @@ bool Turing::hasTrans(int num, char a) const{
 }
 
 Trans * Turing::getTrans(int num, char a) const {
-	for(int i=0; i<this->states.size(); i++){
+	for(unsigned int i=0; i<this->states.size(); i++){
 		if(this->states[i].getNum()==num)
 			return this->states[i].getTrans(a);
 	}
@@ -156,7 +156,7 @@ bool State::hasTrans(char a) const {
 }
 
 Trans * State::getTrans(char a) const {
-	for(int i=0; i<this->trans.size(); i++){
+	for(unsigned int i=0; i<this->trans.size(); i++){
 		if(this->trans[i].getA()==a)
 			return &(this->trans[i]);
 	}
