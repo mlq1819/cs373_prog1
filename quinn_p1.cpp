@@ -145,7 +145,7 @@ bool Turing::go(){
 		cout << "->" << this->cur;
 		return this->go();
 	} else if(DEBUG){
-		cout << "NO TRANSITION:\n\t"
+		cout << "NO TRANSITION:\n\t";
 		s->print();
 	}
 	return false;
