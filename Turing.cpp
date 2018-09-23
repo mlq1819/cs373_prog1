@@ -40,18 +40,18 @@ int main(int argc, char *argv[]){
 	while(!reader.atEnd()){
 		string str = reader.current();
 		if(DEBUG)
-			cout << "\tStart\t" << str << endl;
+			cout << "Start\t" << str << endl;
 		if(str.find("state", 0)==0){
 			if(DEBUG)
-				cout << "State: Adding... ";
+				cout << "\tState: Adding... ";
 			turing.addState(str);
 		} else if(str.find("transition", 0)==0){
 			if(DEBUG)
-				cout << "Transition: Adding... " << endl;
+				cout << "\tTransition: Adding... " << endl;
 			turing.addTrans(str);
 		}
 		if(DEBUG)
-			cout << "\tAdded!\t" << str << endl;
+			cout << "\t\tAdded!" << str << endl;
 		reader.next();
 	}
 	
