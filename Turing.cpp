@@ -159,22 +159,28 @@ State::State(vector<string> str){
 		cout << "[num=";
 	this->num = stoi(str[1], nullptr, 10);
 	s = "start";
+	this->start=this->accept=this->reject=false;
 	if(DEBUG)
-		cout << this->num << "],[" << s << "=";
-	if(str[2].compare(s)==0)
+		cout << this->num << "]";
+	if(str[2].compare(s)==0){
 		this->start=true;
+		if(DEBUG)
+			cout << ",[" << s << "]";
+	}
 	s = "accept";
-	if(DEBUG)
-		cout << this->start << "],[" << s << "=";
-	else if(str[2].compare(s)==0)
+	else if(str[2].compare(s)==0){
 		this->accept=true;
+		if(DEBUG)
+			cout << ",[" << s << "]";
+	}
 	s = "reject";
-	if(DEBUG)
-		cout << this->accept << "],[" << s << "=";
-	else if(str[2].compare(s)==0)
+	else if(str[2].compare(s)==0){
 		this->reject=true;
+		if(DEBUG)
+			cout << ",[" << s << "]";
+	}
 	if(DEBUG)
-		cout << this->reject << "]" << endl;
+		cout << endl;
 }
 
 State::State(int num, bool start, bool accept, bool reject){
