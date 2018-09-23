@@ -29,7 +29,7 @@ int main(int argc, char *argv[]){
 	if(DEBUG){
 		reader.start();
 		while(!reader.atEnd()){
-			cout << str << endl;
+			cout << reader.current() << endl;
 			reader.next();
 		}
 	}
