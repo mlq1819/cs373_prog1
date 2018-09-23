@@ -117,7 +117,7 @@ bool Turing::go(){
 	if(s->hasTrans(c)){
 		Transition * t = s->getTrans(c);
 		if(DEBUG){
-			cout << "(" << this->num << "," << c;
+			cout << "(" << this->cur << "," << c;
 			cout << ": [" << t->getQ() << "," << t->getA() << "," << t->getR() << "," << t->getB() << "," << t->getX() << "])" << endl;
 		}
 		this->cur=t->getR();
