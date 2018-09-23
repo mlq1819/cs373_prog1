@@ -146,18 +146,21 @@ bool Turing::go(char x){
 		return this->go(t->getX());
 	} else if(DEBUG){
 		if(x=='L'){
-			if(this->index==0)
+			if(this->index==0){
+				s->print();
 				return false;
-			else
+			} else
 				this->index--;
 		} else if(x=='R'){
-			if(((unsigned int) this->index)==this->str.size()-1)
+			if(((unsigned int) this->index)==this->str.size()-1){
+				s->print();
 				return false;
-			else
+			} else
 				this->index++;
 		} else
 			return false;
 		return this->go(x);
+		
 	}
 	return false;
 }
