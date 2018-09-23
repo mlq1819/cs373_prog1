@@ -53,7 +53,7 @@ class Turing{
 		std::vector<State> states;
 		int cur;
 		int start;
-		State * getState(int num) const;
+		State * getState(int num);
 		Transition * getTrans(int num, char a);
 	public:
 		Turing();

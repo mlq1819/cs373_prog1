@@ -89,7 +89,7 @@ bool Turing::hasTrans(int num, char a) const{
 	return false;
 }
 
-Transition * Turing::getTrans(int num, char a) const {
+Transition * Turing::getTrans(int num, char a){
 	for(unsigned int i=0; i<this->states.size(); i++){
 		if(this->states[i].getNum()==num)
 			return this->states[i].getTrans(a);
@@ -144,7 +144,7 @@ State::State(int num){
 	this->start=this->accept=this->reject=false;
 }
 
-bool State::equals(State o){
+bool State::equals(State o) const {
 	return o.getNum()==this->getNum() && o.isStart()==this->isStart() && o.isAccept()==this->isAccept() && o.isReject()==this->isReject();
 }
 
