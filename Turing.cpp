@@ -171,7 +171,7 @@ State::State(vector<string> str){
 	s = "reject";
 	if(DEBUG)
 		cout << this->accept << "],[" << s << "=";
-	else if(str[2]).compare(s)==0)
+	else if(str[2].compare(s)==0)
 		this->reject=true;
 	if(DEBUG)
 		cout << this->reject << "]" << endl;
