@@ -1,5 +1,5 @@
 #ifndef MQ_TURING_H
-#define MQ_TURING_H
+#define MQ_QUINN_P1_H
 #include <stdio.h>
 #include <iostream>
 #include <stdlib.h>

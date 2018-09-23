@@ -1,4 +1,4 @@
-#include "Turing.h"
+#include "quinn_p1.h"
 #include "Filereader.h"
 #define DEBUG false
 
