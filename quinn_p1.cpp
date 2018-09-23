@@ -206,11 +206,10 @@ bool Turing::addTrans(Transition t){
 		return t0.equals(t);
 	}
 	if(this->hasState(t.getQ())){
-		this->getState(t.getQ())->addTrans(t);
-		return true;
+		return this->getState(t.getQ())->addTrans(t);
 	}
 	this->addState(State(t.getQ()));
-	return true;
+	return this->addTrans(t);
 }
 
 bool Turing::addTrans(vector<string> str){
