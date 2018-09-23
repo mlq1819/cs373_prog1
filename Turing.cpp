@@ -167,7 +167,7 @@ Transition * State::getTrans(char a){
 
 bool State::addTrans(Transition t){
 	if(this->hasTrans(t.getA())){
-		Transition t0 = *(this->getTrans(a));
+		Transition t0 = *(this->getTrans(t.getA()));
 		return t0.equals(t);
 	}
 	this->trans.push_back(t);
