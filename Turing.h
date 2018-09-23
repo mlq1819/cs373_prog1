@@ -33,7 +33,7 @@ class State{
 		int num;
 		std::vector<Transition> trans;
 		friend class Turing;
-		Transition * getTrans(char a) const;
+		Transition * getTrans(char a);
 	public:
 		State(std::string);
 		State(int num, bool start, bool accept, bool reject);
@@ -54,7 +54,7 @@ class Turing{
 		int cur;
 		int start;
 		State * getState(int num) const;
-		Transition * getTrans(int num, char a) const;
+		Transition * getTrans(int num, char a);
 	public:
 		Turing();
 		~Turing();
@@ -63,7 +63,7 @@ class Turing{
 		bool addState(State s);
 		bool addState(std::string str);
 		bool hasState(int num) const;
-		bool hasTrans(int num, char a);
+		bool hasTrans(int num, char a) const;
 		bool addTrans(Transition t);
 		bool addTrans(std::string);
 };
