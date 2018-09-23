@@ -118,8 +118,10 @@ bool Turing::go(){
 		cout << "(" << this->cur << "," << c << ")" << endl; 
 	if(s->hasTrans(c)){
 		Transition * t = s->getTrans(c);
-		if(DEBUG)
-			cout << ": [" << t->getQ() << "," << t->getA() << "," << t->getR() << "," << t->getB() << "," << t->getX() << "]" << endl;
+		if(DEBUG){
+			cout << ":";
+			t->print();
+		}
 		this->cur=t->getR();
 		this->str.replace(this->index, 1, 1, t->getB());
 		if(t->getX()=='L'){
@@ -136,6 +138,8 @@ bool Turing::go(){
 			return false;
 		cout << "->" << this->cur;
 		return this->go();
+	} else if(DEBUG){
+		
 	}
 	return false;
 }
@@ -293,6 +297,20 @@ bool State::addTrans(Transition t){
 bool State::addTrans(vector<string> str){
 	Transition t = Transition(str);
 	return this->addTrans(t);
+}
+
+void State::print()const{
+	cout << "[" << this->num;
+	if(this->start)
+		cout << ",START";
+	if(this->accept)
+		cout << ",ACCEPT";
+	if(this->reject)
+		cout << ",REJECT";
+	cout << "{" << endl;
+	for(unsigned int i=0; i<this->trans.size(); i++)
+		trans[i].print();
+	cout << "\t}]" << endl;
 }
 
 

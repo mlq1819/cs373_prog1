@@ -47,6 +47,7 @@ class State{
 		bool isStart()const{return this->start;};
 		bool isAccept()const{return this->accept;};
 		bool isReject()const{return this->reject;};
+		void print()const;
 };
 
 class Turing{
