@@ -168,13 +168,13 @@ State::State(vector<string> str){
 			cout << ",[" << s << "]";
 	}
 	s = "accept";
-	else if(str[2].compare(s)==0){
+	if(str[2].compare(s)==0){
 		this->accept=true;
 		if(DEBUG)
 			cout << ",[" << s << "]";
 	}
 	s = "reject";
-	else if(str[2].compare(s)==0){
+	if(str[2].compare(s)==0){
 		this->reject=true;
 		if(DEBUG)
 			cout << ",[" << s << "]";
