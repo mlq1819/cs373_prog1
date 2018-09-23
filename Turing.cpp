@@ -161,17 +161,17 @@ State::State(vector<string> str){
 	s = "start";
 	if(DEBUG)
 		cout << this->num << "],[" << s << "=";
-	if(str[2](index, s.size()).compare(s)==0)
+	if(str[2].compare(s)==0)
 		this->start=true;
 	s = "accept";
 	if(DEBUG)
 		cout << this->start << "],[" << s << "=";
-	else if(str[2](index, s.size()).compare(s)==0)
+	else if(str[2].compare(s)==0)
 		this->accept=true;
 	s = "reject";
 	if(DEBUG)
 		cout << this->accept << "],[" << s << "=";
-	else if(str[2](index, s.size()).compare(s)==0)
+	else if(str[2]).compare(s)==0)
 		this->reject=true;
 	if(DEBUG)
 		cout << this->reject << "]" << endl;
