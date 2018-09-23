@@ -168,8 +168,6 @@ State::State(vector<string> str){
 		if(DEBUG)
 			cout << ",(str[" << i << "]==" << str[i] << ")";
 		s = "start";
-		if(DEBUG)
-			cout << this->num << "]";
 		if(str[i].compare(s)==0){
 			this->start=true;
 			if(DEBUG)
