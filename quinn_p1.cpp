@@ -154,7 +154,7 @@ bool Turing::go(char x){
 			} else
 				this->index--;
 		} else if(x=='R'){
-			if(((unsigned int) this->index)==this->str.size()-1){
+			if(((unsigned int) this->index)==this->str.size()){
 				s->print();
 				return false;
 			} else
