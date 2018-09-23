@@ -1,5 +1,6 @@
 #include "Turing.h"
 #include "Filereader.h"
+#define DEBUG true
 
 using namespace std;
 
@@ -25,7 +26,15 @@ int main(int argc, char *argv[]){
 	
 	Turing turing = Turing();
 	
-	reader.start();
+	if(DEBUG){
+		reader.start();
+		while(!reader.atEnd()){
+			cout << str << endl;
+			reader.next();
+		}
+	}
+	
+	reader.start()
 	while(!reader.atEnd()){
 		string str = reader.current();
 		if(str.find("state", 0)==0)
