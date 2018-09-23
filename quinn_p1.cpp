@@ -124,7 +124,7 @@ bool Turing::go(){
 			else
 				this->index--;
 		} else if(t->getX()=='R'){
-			if(this->index==this->str.size()-1)
+			if(((unsigned int) this->index)==this->str.size()-1)
 				return false;
 			else
 				this->index++;
