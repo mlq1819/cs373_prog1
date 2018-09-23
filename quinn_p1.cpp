@@ -1,6 +1,6 @@
 #include "quinn_p1.h"
 #include "Filereader.h"
-#define DEBUG true
+#define DEBUG false
 
 using namespace std;
 
