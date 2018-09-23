@@ -144,17 +144,20 @@ State::State(string str){
 		cout << "[num=";
 	this->num = stoi(str.substr(index, -1), &index, 10);
 	index++;
+	s = "start";
 	if(DEBUG)
-		cout << this->num << "],[start=";
-	if(str.substr(index, -1).compare("start")==0)
+		cout << this->num << "],[" << s << "=";
+	if(str.substr(index, s.size()).compare(s)==0)
 		this->start=true;
+	s = "accept";
 	if(DEBUG)
-		cout << this->start << "],[accept=";
-	else if(str.substr(index, -1).compare("accept")==0)
+		cout << this->start << "],[" << s << "=";
+	else if(str.substr(index, s.size()).compare(s)==0)
 		this->accept=true;
+	s = "reject";
 	if(DEBUG)
-		cout << this->accept << "],[reject=";
-	else if(str.substr(index, -1).compare("reject")==0)
+		cout << this->accept << "],[" << s << "=";
+	else if(str.substr(index, s.size()).compare(s)==0)
 		this->reject=true;
 	if(DEBUG)
 		cout << this->reject << "]" << endl;
