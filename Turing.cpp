@@ -140,14 +140,24 @@ State::State(string str){
 	size_t index=0;
 	string s = "state\t";
 	index+=s.size();
+	if(DEBUG)
+		cout << "[num=";
 	this->num = stoi(str.substr(index, -1), &index, 10);
 	index++;
+	if(DEBUG)
+		cout << this->num << "],[start=";
 	if(str.substr(index, -1).compare("start")==0)
 		this->start=true;
+	if(DEBUG)
+		cout << this->start << "],[accept=";
 	else if(str.substr(index, -1).compare("accept")==0)
 		this->accept=true;
+	if(DEBUG)
+		cout << this->accept << "],[reject=";
 	else if(str.substr(index, -1).compare("reject")==0)
 		this->reject=true;
+	if(DEBUG)
+		cout << this->reject << "]" << endl;
 }
 
 State::State(int num, bool start, bool accept, bool reject){
@@ -212,6 +222,8 @@ Transition::Transition(string str){
 		cout << this->q << "],[a=";
 	this->a = str.substr(index, -1).at(index);
 	index++;
+	if(this->a=='_')
+		this->a=' ';
 	if(DEBUG)
 		cout << this->a << "],[r=";
 	this->r= stoi(str.substr(index, -1), &index, 10);
@@ -220,6 +232,8 @@ Transition::Transition(string str){
 		cout << this->r << "],[b=";
 	this->b = str.substr(index, -1).at(index);
 	index++;
+	if(this->b=='_')
+		this->b=' ';
 	if(DEBUG)
 		cout << this->b << "],[x=";
 	this->x = str.substr(index, -1).at(index);
