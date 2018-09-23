@@ -154,10 +154,10 @@ bool Turing::addTrans(vector<string> str){
 
 
 State::State(vector<string> str){
+	string s = "state";
 	if(DEBUG)
 		cout << "[num=";
 	this->num = stoi(str[1], nullptr, 10);
-	index++;
 	s = "start";
 	if(DEBUG)
 		cout << this->num << "],[" << s << "=";
@@ -232,27 +232,22 @@ Transition::Transition(vector<string> str){
 	if(DEBUG)
 		cout << "[q=";
 	this->q = stoi(str[1], nullptr, 10);
-	index++;
 	if(DEBUG)
 		cout << this->q << "],[a=";
 	this->a = str[2].at(0);
-	index++;
 	if(this->a=='_')
 		this->a=' ';
 	if(DEBUG)
 		cout << this->a << "],[r=";
 	this->r= stoi(str[3], nullptr, 10);
-	index++;
 	if(DEBUG)
 		cout << this->r << "],[b=";
 	this->b = str[4].at(0);
-	index++;
 	if(this->b=='_')
 		this->b=' ';
 	if(DEBUG)
 		cout << this->b << "],[x=";
 	this->x = str[5].at(0);
-	index++;
 	if(DEBUG)
 		cout << this->x << "]" << endl;
 }
