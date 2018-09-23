@@ -76,7 +76,7 @@ int main(int argc, char *argv[]){
 		reader.next();
 	}
 	
-	turing.start();
+	turing.begin();
 	
 	return 0;
 }
@@ -92,7 +92,7 @@ Turing::Turing(string str, unsigned long max){
 }
 
 //Entry into program
-bool Turing::start(){
+bool Turing::begin(){
 	this->cur=this->start;
 	cout << this->cur;
 	if(!this->go()){

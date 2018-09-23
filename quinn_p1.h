@@ -70,7 +70,7 @@ class Turing{
 		bool hasTrans(int num, char a) const;
 		bool addTrans(Transition t);
 		bool addTrans(std::vector<std::string> str);
-		bool start();
+		bool begin();
 };
 
 #endif
