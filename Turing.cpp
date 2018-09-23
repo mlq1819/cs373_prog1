@@ -118,7 +118,7 @@ bool Turing::addTrans(string str){
 
 
 State::State(string str){
-	int index=0;
+	size_t index=0;
 	string s = "state\t";
 	index+=s.size();
 	this->num = stoi(str.substr(index, -1), &index, 10);
@@ -182,7 +182,7 @@ bool State::addTrans(string str){
 
 
 Transition::Transition(string str){
-	int index=0;
+	size_t index=0;
 	string t = "transition\t";
 	index+=t.size();
 	this->q = stoi(str.substr(index, -1), &index, 10);
