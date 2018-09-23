@@ -156,8 +156,10 @@ bool Turing::addTrans(vector<string> str){
 State::State(vector<string> str){
 	string s = "state";
 	if(DEBUG)
-		cout << "[num=";
+		cout << "(str.size()==" << str.size() << "),[num=";
 	this->num = stoi(str[1], nullptr, 10);
+	if(DEBUG)
+		cout << this->num << "]";
 	
 	this->start=this->accept=this->reject=false;
 	for(unsigned int i=2; i<str.size(); i++){
